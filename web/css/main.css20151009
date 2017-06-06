@@ -1,0 +1,387 @@
+html, body, div, h3, h4, p, figure {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+#preload {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    z-index: 100;
+}
+#preload p {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    color: #fff;
+    font-size: 60px;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+#root {
+    -webkit-transform-origin: left top;
+    -moz-transform-origin: left top;
+    -ms-transform-origin: left top;
+    -o-transform-origin: left top;
+    transform-origin: left top;
+}
+.content {
+    height: 100%;
+    -webkit-transform-origin: center top;
+    -moz-transform-origin: center top;
+    -ms-transform-origin: center top;
+    -o-transform-origin: center top;
+    transform-origin: center top;
+}
+.page {
+    display: none;
+    position: relative;
+    width: 640px;
+    height: 1136px;
+    background-image: url(../img/bg.jpg);
+    -webkit-background-size: cover;
+    background-size: cover;
+    color: #000;
+}
+
+.page.active {
+    display: block;
+}
+
+.center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.page[role="login"] {
+    padding-top: 194px;
+}
+
+
+h2, h3, h4 {
+    text-align: center;
+}
+
+h3, h4, #login, #username, #password {
+    width: 392px;
+    margin: 0 auto;
+}
+
+h3 {
+    color: #000;
+    font-size: 38px;
+}
+
+h4 {
+    margin-top: 12px;
+    margin-bottom: 32px;
+    font-size: 22px;
+}
+
+#login>div {
+    margin: 10px 0;
+}
+
+#username, #password {
+    height: 64px;
+    padding-left: 15px;
+    border: 1px solid #000;
+    border-radius: 12px;
+    font-size: 20px;
+}
+
+#isRemember {
+    height: 22px;
+    width: 22px;
+    border: 1px solid #000;
+}
+
+#resetLogin {
+    position: absolute;
+    left: 50%;
+    bottom: 100px;
+    margin-left: -60px;
+}
+
+input {
+    background: -moz-linear-gradient(135deg, #d3d3d4, #fafafa);
+    background: -webkit-gradient(linear,100% 100%,0 0,from(#d3d3d4),to(#fafafa));
+    background: -webkit-linear-gradient(135deg, #d3d3d4, #fafafa);
+    background: -o-linear-gradient(135deg, #d3d3d4, #fafafa);
+}
+
+label {
+    font-size: 20px;
+}
+
+button {
+    width: 120px;
+    height: 40px;
+    margin: 84px auto;
+    font-size: 18px;
+}
+button, .button {
+    display: block;
+    color: #e60012;
+    background: #fff;
+    border: none;
+    border-radius: 6px;
+    -webkit-box-shadow: 5px 5px 4px rgba(0, 0, 0, .2);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .2);
+}
+
+.button {
+    width: 160px;
+    height: 50px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 50px;
+    font-size: 34px;
+}
+
+.page[role="game"] {
+    padding-top: 20px;
+}
+
+.status, h2 {
+    width: 585px;
+    margin: 0 auto;
+}
+
+.status {
+    color: #e60012;
+    font-size: 12px;
+    line-height: 1.5;
+    font-weight: bolder;
+}
+
+h2 {
+    color: #e60012;
+    font-size: 50px;
+    line-height: 1.2;
+}
+
+.stage {
+    width: 588px;
+    height: 588px;
+    margin: 40px auto;
+}
+
+.link {
+    color: #e60012;
+    float: right;
+    margin-right: 54px;
+    font-size: 20px;
+}
+
+.close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 36px;
+}
+
+/* animate */
+
+.card {
+    position: relative;
+    overflow: visible;
+    float: left;
+    width: 192px;
+    height: 192px;
+    margin-right: 2px;
+    margin-bottom: 3px;
+    -webkit-transition-duration: 500ms;
+    -o-transition-duration: 500ms;
+    transition-duration: 500ms;
+    -webkit-transform: scale(1) translate(0, 0);
+    -ms-transform: scale(1) translate(0, 0);
+    -o-transform: scale(1) translate(0, 0);
+    transform: scale(1) translate(0, 0);
+}
+
+.card figcaption {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-transform: perspective(1300px) rotateY(180deg);
+    -ms-transform: perspective(1300px) rotateY(180deg);
+    -o-transform: perspective(1300px) rotateY(180deg);
+    transform: perspective(1300px) rotateY(180deg);
+    -webkit-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: 500ms;
+    -o-transition: 500ms;
+    transition: 500ms;
+}
+
+.card .background {
+    -webkit-transform: perspective(1300px);
+    -ms-transform: perspective(1300px);
+    -o-transform: perspective(1300px);
+    transform: perspective(1300px);
+    -webkit-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: 500ms;
+    -o-transition: 500ms;
+    transition: 500ms;
+}
+
+.card.active, .card figcaption, .card .background{
+    -webkit-transition-delay: 500ms;
+    -o-transition-delay: 500ms;
+    transition-delay: 500ms;
+}
+
+.card, .card.active figcaption, .card.active .background{
+    -webkit-transition-delay: 0;
+    -o-transition-delay: 0;
+    transition-delay: 0;
+}
+
+.ready figcaption, .done figcaption, .card.chosen figcaption {
+    -webkit-transform: perspective(1300px) rotateY(0);
+    -ms-transform: perspective(1300px) rotateY(0);
+    -o-transform: perspective(1300px) rotateY(0);
+    transform: perspective(1300px) rotateY(0);
+}
+
+.ready .background, .done .background, .card.chosen .background {
+    -webkit-transform: perspective(1300px) rotateY(180deg);
+    -ms-transform: perspective(1300px) rotateY(180deg);
+    -o-transform: perspective(1300px) rotateY(180deg);
+    transform: perspective(1300px) rotateY(180deg);
+}
+
+.front {
+    width: 100%;
+    height: 100%;
+}
+
+.card.active {
+    -webkit-box-shadow: 10px 10px 10px rgba(0,0,0,.3);
+    box-shadow: 10px 10px 10px rgba(0,0,0,.3);
+    z-index: 10;
+}
+
+.card.active[index="1"]{
+    -webkit-transform: scale(2) translate(50%, 50%);
+    -ms-transform: scale(2) translate(50%, 50%);
+    -o-transform: scale(2) translate(50%, 50%);
+    transform: scale(2) translate(50%, 50%);
+}
+
+.card.active[index="2"]{
+    -webkit-transform: scale(2) translate(0, 50%);
+    -ms-transform: scale(2) translate(0, 50%);
+    -o-transform: scale(2) translate(0, 50%);
+    transform: scale(2) translate(0, 50%);
+}
+
+.card.active[index="3"]{
+    -webkit-transform: scale(2) translate(-50%, 50%);
+    -ms-transform: scale(2) translate(-50%, 50%);
+    -o-transform: scale(2) translate(-50%, 50%);
+    transform: scale(2) translate(-50%, 50%);
+}
+
+.card.active[index="4"]{
+    -webkit-transform: scale(2) translate(50%, 0);
+    -ms-transform: scale(2) translate(50%, 0);
+    -o-transform: scale(2) translate(50%, 0);
+    transform: scale(2) translate(50%, 0);
+}
+
+.card.active[index="5"]{
+    -webkit-transform: scale(2) translate(0, 0);
+    -ms-transform: scale(2) translate(0, 0);
+    -o-transform: scale(2) translate(0, 0);
+    transform: scale(2) translate(0, 0);
+}
+
+.card.active[index="6"]{
+    -webkit-transform: scale(2) translate(-50%, 0);
+    -ms-transform: scale(2) translate(-50%, 0);
+    -o-transform: scale(2) translate(-50%, 0);
+    transform: scale(2) translate(-50%, 0);
+}
+
+.card.active[index="7"]{
+    -webkit-transform: scale(2) translate(50%, -50%);
+    -ms-transform: scale(2) translate(50%, -50%);
+    -o-transform: scale(2) translate(50%, -50%);
+    transform: scale(2) translate(50%, -50%);
+}
+
+.card.active[index="8"]{
+    -webkit-transform: scale(2) translate(0, -50%);
+    -ms-transform: scale(2) translate(0, -50%);
+    -o-transform: scale(2) translate(0, -50%);
+    transform: scale(2) translate(0, -50%);
+}
+
+.card.active[index="9"]{
+    -webkit-transform: scale(2) translate(-50%, -50%);
+    -ms-transform: scale(2) translate(-50%, -50%);
+    -o-transform: scale(2) translate(-50%, -50%);
+    transform: scale(2) translate(-50%, -50%);
+}
+
+
+.page[role="rule"] {
+    padding-top: 60px;
+    text-align: center;
+}
+
+.page[role="rule"] div {
+    margin-bottom: 20px;
+}
+
+.page[role="info"] {
+    color: #000;
+    padding-top: 90px;
+    text-align: center;
+}
+
+.page[role="info"] form {
+    margin: 32px auto;
+}
+
+.page[role="info"] label {
+    font-size: 30px;
+}
+
+.page[role="info"] input {
+    font-size: 30px;
+    border: 1px solid #918b8a;
+    border-radius: 16px;
+}
+
+.page[role="info"] form>div {
+    margin: 12px auto;
+}
+
+.page[role="info"] button {
+    margin: 20px auto;
+}

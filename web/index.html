@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
+    <title>TST抽奖翻牌</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script>
+        var STARTDATE = new Date('May 27 2017 10:00:00');
+        var ENDDATE = new Date('May 31 2017 23:59:59');
+    </script>
+    <script src="js/zepto.js"></script>
+    <script src="js/preload.js"></script>
+    <script src="js/WXShare.js"></script>
+</head>
+<body>
+
+    <div id="preload" style="display:none">
+        <p>Loading...</p>
+    </div>
+    <div id="root">
+        <div class="page active" role="login">
+            <div class="content">
+                <h3>用户登录</h3>
+                <h4>（此用户登录名即网站登录帐号）</h4>
+                <form id="login">
+                    <div>
+                        <input type="text" id="username" placeholder="用户名">
+                    </div>
+                    <div>
+                        <input type="password" id="password" placeholder="密码">
+                    </div>
+                    <div>
+                        <input type="checkbox" id="isRemember">
+                        <label for="isRemember">记住我</label>
+                    </div>
+                </form>
+                <button type="submit" id="login-btn">登录</button>
+            </div>
+        </div>
+        <div class="page" role="info">
+            <div class="content">
+                <p class="p_info1 pbold">请提前填写中奖信息</p>
+                <p class="p_info2 pbold">以便中奖后及时收到奖品</p>
+                <p class="p_info3 pbold">（地址不完整者若中奖视为自动放弃奖品）</p>
+                <form id="info">
+                    <div><label for="name">姓名：</label><input type="text" id="name"></div>
+                    <div><label for="moblie">电话：</label><input type="tel" id="mobile" maxlength="11"></div>
+                    <div class="atextDiv"><label>具体收货地址：</label></div>
+                    <div>
+                        <input type="text" id="address" style="width:100%;">
+                    </div>
+                </form>
+                <p class="p_info3">例如：上海市闸北区中华新路888号8-801室</p>
+                <button id="info-btn">确认提交</button>
+                <!--<img src="img/info_bg.png" style="position:absolute; left:0; bottom:20px">-->
+                <div class="txDiv">
+                    <p class="p_info4">注意：</p>
+                    <p class="p_info5">如果不及时提交正确地址将不发货，不接受邮件、短信、电话、聊天工具等提供的地址</p>
+                </div>
+            </div>
+        </div>
+        <div class="page " role="game">
+            <div class="content">
+                <div class="status">
+                    <p>CODE码：<span>xx xxxx xxxxxx</span></p>
+                    <p>抽奖次数：<span>x</span>次</p>
+                </div>
+                <h2><img src="img/txt1.png"/></h2>
+                <div class="stage">
+                    <figure index="1" class="card">
+                        <img src="img/item_bg.jpg" class="background">
+                        <figcaption>
+                            <div class="front"><img src="img/card_1.jpg"></div>
+                        </figcaption>
+                    </figure>
+                    <figure index="2" class="card">
+                        <img src="img/item_bg.jpg" class="background">
+                        <figcaption>
+                            <div class="front"><img src="img/card_2.jpg"></div>
+                        </figcaption>
+                    </figure>
+                    <figure index="3" class="card">
+                        <img src="img/item_bg.jpg" class="background">
+                        <figcaption>
+                            <div class="front"><img src="img/card_3.jpg"></div>
+                        </figcaption>
+                    </figure>
+                    <figure index="4" class="card">
+                        <img src="img/item_bg.jpg" class="background">
+                        <figcaption>
+                            <div class="front"><img src="img/card_4.jpg"></div>
+                        </figcaption>
+                    </figure>
+                    <figure index="5" class="card">
+                        <img src="img/item_bg.jpg" class="background">
+                        <figcaption>
+                            <div class="front"><img src="img/card_5.jpg"></div>
+                        </figcaption>
+                    </figure>
+                    <figure index="6" class="card">
+                        <img src="img/item_bg.jpg" class="background">
+                        <figcaption>
+                            <div class="front"><img src="img/card_6.jpg"></div>
+                        </figcaption>
+                    </figure>
+                    <figure index="7" class="card">
+                        <img src="img/item_bg.jpg" class="background">
+                        <figcaption>
+                            <div class="front"><img src="img/card_7.jpg"></div>
+                        </figcaption>
+                    </figure>
+                    <figure index="8" class="card">
+                        <img src="img/item_bg.jpg" class="background">
+                        <figcaption>
+                            <div class="front"><img src="img/card_8.jpg"></div>
+                        </figcaption>
+                    </figure>
+                    <figure index="9" class="card">
+                        <img src="img/item_bg.jpg" class="background">
+                        <figcaption>
+                            <div class="front"><img src="img/card_9.jpg"></div>
+                        </figcaption>
+                    </figure>
+                </div>
+                <a class="button">开始翻牌</a>
+                <a class="link">活动规则>>></a>
+            </div>
+        </div>
+        <div class="page" role="rule">
+            <div class="close">×</div>
+            <div class="content" style="overflow:auto;-webkit-overflow-scrolling:touch;">
+                <div style="z-index:3"><img src="img/rules.png"></div>
+                 <img src="img/rules-cp.png" style="position:absolute; left:130px; bottom:0px">
+            </div>
+        </div>
+        <!--
+        <div class="page" role="info">
+            <div class="content">
+                <h3>请正确填写以下信息</h3>
+                <form id="info">
+                    <div><label for="name">姓名：</label><input type="text" id="name"></div>
+                    <div><label for="moblie">电话：</label><input type="tel" id="mobile" maxlength="11"></div>
+                    <div><label for="address">地址：</label><input type="text" id="address"></div>
+                </form>
+                <button id="info-btn">确认提交</button>
+                <img src="img/info_bg.png" style="position:absolute; left:0; bottom:20px">
+            </div>
+        </div>
+        -->
+        <div class="page" role="nope">
+            <div class="close">×</div>
+            <div class="content">
+                <img src="img/nope.png" class="center" style="top:40%">
+                <button id="resetLogin">重新登录</button>
+            </div>
+        </div>
+
+        <div class="page end" style="background:url(img/end.jpg); background-size:cover;"></div>
+        <div class="page start" style="background:url(img/start2.jpg) no-repeat center; background-size:cover; "></div>
+    </div>
+
+    <script>
+/**
+ * data
+ */
+ $.list = [1,2,3,4,5,6,7,8,9];
+ $.layout = {
+    w: 640,
+    h: 1136
+ }
+ $.page = 0;
+ $.database = {};
+
+/**
+ * extend Zepto
+ */
+ $.fn.pipe = function(data, callback){
+     data = $.parseJSON(data);
+     var _res = data.jsonResponse.Rows ? data.jsonResponse.Rows[0] : data.jsonResponse;
+     data.result === 'success' ? callback(_res) : $.fn.tips(_res);
+     return this;
+ };
+ $.fn.tips = function(data){
+     if (data !== 'usercode expiry') alert(data);;
+     return this;
+ }
+ $.fn.storage = function(key, value){
+    if (value) {
+        if ($.type(key) === 'string') {
+            $.cookie(key, value, { expires: 7 });
+            return this;
+        }
+    } else {
+        if($.type(key) === 'object') {
+            for(var k in key) {
+                $.cookie(k, key[k], { expires: 7 });
+            }
+            return this;
+        }
+        return $.cookie(key);
+    }
+
+ }
+
+/**
+ * onload
+ */
+
+ $(function () {
+
+     // scale the view
+     var size = {
+         w: window.innerWidth,
+         h: window.innerHeight
+     };
+     if (size.w > 640) {
+         size.w = 320;
+     };
+     var scale = size.w / $.layout.w;
+
+     $('#root').css({
+         'transform': 'scale(' + scale + ',' + scale + ')',
+         '-webkit-transform': 'scale(' + scale + ',' + scale + ')'
+     });
+     if (size.w / size.h > 320 / 480) {
+         $('.content').css({
+             'transform': 'scale(.8, .8)',
+             '-webkit-transform': 'scale(.8, .8)'
+         });
+     }
+
+
+     // cache dom
+     var pages = $('.page');
+     var stage = $('.stage');
+
+
+     /**
+     * process
+     */
+
+     isLogin();
+
+     if (new Date() >= ENDDATE || new Date() <= STARTDATE) {
+         if (new Date() >= ENDDATE) $('.page.end').addClass('active').siblings().removeClass('active');
+         if (new Date() <= STARTDATE) $('.page.start').last().addClass('active').siblings().removeClass('active');
+     }
+
+     $.fn.storage('bomb', 'notBomb');
+
+     /**
+     * workflow
+     */
+
+     // auto redirective
+     function isLogin() {
+         $.get('tst_state.ashx?t=' + new Date(), {
+             state: $.fn.storage('state'),
+             usercode: $.fn.storage('usercode')
+         },
+           function (res) {
+               $(this).pipe(res, function (data) {
+                   getInfo();
+                   toGamePage(data);
+               });
+           }
+        );
+     }
+
+     // start a game
+     function isBomb() {
+         $.post('tst_winningrecord.ashx?t=' + new Date(), {
+             usercode: $.fn.storage('usercode')
+         },
+         function (res) {
+
+
+             /*
+             res = { "result": "success", "jsonResponse": { "Rows": [{ "id": 5, "prizename": "meibaiquban", "prizelevel": 5, "prizenumber": 1, "tstcount": 409}]} };
+
+             res = JSON.stringify(res);
+             */
+
+             window.RESDATA = JSON.parse(res);
+
+
+
+
+             ///zqqqqqqq
+             $(this).pipe(res, function (data) {
+
+                 data.prizename ? got(data) : lose(data);
+                 //$('.card').off("click");
+                 $('.card').on('click', function () {
+                     gameFlowCtrl($(this));
+                     gameAnimCtrl($(this));
+                     updateStatus();
+                 });
+             });
+         }
+       );
+     }
+
+     function getInfo() {
+         $.post('tst_addresinfo.ashx?t=' + new Date(), {
+             tstcode: $.fn.storage('tstcode')
+         },
+            function (res) {
+
+                var info = JSON.parse(res);
+
+                if (info.jsonResponse.Rows && info.jsonResponse.Rows[0].tstcode) {
+                    $('#name').val(info.jsonResponse.Rows[0].username);
+                    $('#mobile').val(info.jsonResponse.Rows[0].usermobilephone);
+                    $('#address').val(info.jsonResponse.Rows[0].useraddress);
+                }
+            }
+        );
+     }
+
+
+     // page turning
+     function toPage(page) {
+         if (new Date() >= ENDDATE || new Date() <= STARTDATE) {
+             if (new Date() >= ENDDATE) $('.page.end').addClass('active').siblings().removeClass('active');
+             if (new Date() <= STARTDATE) $('.page.start').last().addClass('active').siblings().removeClass('active');
+         } else {
+             pages.eq($.page).removeClass('active');
+             $.page = page;
+             pages.eq($.page).addClass('active');
+         }
+     }
+
+     function toGamePage(data) {
+         $.fn.storage('tstcount', data.tstcount); //data.tstcount
+         updateStatus();
+         toPage(1);
+         stage.addClass('ready');
+     }
+
+
+     /**
+     * event binding
+     */
+
+     // login page
+     $('#login-btn').on('touchstart', function () {
+         if (checkAvailable()) auth();
+     });
+     // game page
+     $('.button').on('touchstart', function () {
+         stage.hasClass('ready') || stage.hasClass('done') ? gameReset() : $.fn.tips('请选择一张卡片');
+     });
+     $('.link').on('touchstart', function () {
+         toPage(3);
+     })
+     // rule page
+     $('.close').on('touchstart', function () {
+         toPage(2);
+     })
+     // info page
+     $('#info-btn').on('touchstart', function () {
+         if (checkInfo()) {
+             $.post('tst_useraddress.ashx?t=' + new Date(), {
+                 name: $('#name').val(),
+                 mp: $('#mobile').val(),
+                 ad: $('#address').val(),
+                 //prize:$.fn.storage('id'),
+                 tstcode: $.fn.storage('tstcode')
+             },
+                function (res) {
+                    $(this).pipe(res, function (data) {
+                        $.fn.tips('提交成功！')
+                        toPage(2);
+                    });
+                }
+            )
+         }
+     });
+     $('#resetLogin').on('touchstart', function () {
+         $.fn.storage('state', '');
+         toPage(0);
+     })
+
+     /**
+     * tools
+     */
+     // auth tools
+     function checkAvailable() {
+         if ($('#username').val() && $('#password').val()) {
+             return true;
+         } else {
+             $.fn.tips('请输入正确的账号密码');
+         }
+     }
+
+     function checkInfo() {
+         if (!$('#name').val()) {
+             $.fn.tips('请输入姓名');
+             return false;
+         };
+         if (!$('#mobile').val()) {
+             $.fn.tips('请输入手机号');
+             return false;
+         };
+         if (!$('#address').val()) {
+             $.fn.tips('请输入联系地址');
+             return false;
+         };
+         if (!/^1[34578]\d{9}$/.test($('#mobile').val())) {
+             $.fn.tips('输入的手机号有误');
+             return false;
+         };
+
+         return true;
+     }
+
+     function auth() {
+         $.post('tst_login.ashx?t=' + new Date(), { name: $('#username').val(), pwd: $('#password').val(), isstate: $('#isRemember').prop('checked') ? 1 : 0 }, function (res) {
+             $(this).pipe(res, function (data) {
+                 // base info saved
+                 $(this).storage(data);
+                 // auto login
+                 if ($('#isRemember').prop('checked')) $(this).storage('state', data.usercode);
+                 // workflow control
+                 getInfo();
+                 toGamePage(data);
+             });
+         });
+     }
+
+     // game tools
+     function updateStatus() {
+         var code = $.fn.storage('tstcode');
+         var time = $.fn.storage('tstcount');
+         $('.status').find('span').eq(0).html(code);
+         $('.status').find('span').eq(1).html(time);
+         $.fn.storage('tstcount', time);
+     }
+
+     function gameReset() {
+         if ($.fn.storage('tstcount') == 0) {
+             toPage(4);
+             return;
+         };
+         stage.removeClass('ready');
+         stage.removeClass('done'); //.find('.chosen').removeClass('chosen').removeClass('active');
+         isBomb();
+     }
+
+     function gameAnimCtrl($target) {
+         //alert(stage.attr("class"));
+         stage.toggleClass('done'); //toggleClass
+         
+         $target
+         //.addClass('active')
+         //.addClass('chosen')
+         .off()
+         //.one('touchstart', function(){
+        // $(this).removeClass('active');
+         //})
+         .siblings().off();
+		
+         //console.log($target)
+        
+
+         if ($.fn.storage('bomb') == 'isBomb') {
+             setTimeout(function () {
+                 // if (window.RESDATA.jsonResponse.Rows && window.RESDATA.jsonResponse.Rows[0].prizelevel)
+                 //window.RESDATA.jsonResponse.Rows[0].prizelevel
+                 $.fn.tips('恭喜您中了' + window.RESDATA.jsonResponse.Rows[0].prizelevel + '等奖！');
+                 //toPage(3);
+             }, 1300)
+         };
+     }
+
+     function gameFlowCtrl($target) {
+         var index = $target.index();
+         if (index === $.list.indexOf(5)) {
+             if ($.fn.storage('bomb') === 'notBomb') {
+                 while (index === $.list.indexOf(5)) {
+                     randomList();
+                 }
+             }
+         } else {
+             if ($.fn.storage('bomb') === 'isBomb') {
+                 while (index !== $.list.indexOf(5)) {
+                     randomList();
+                 }
+             };
+         }
+         $('.card').each(function (index) {
+             $(this).find('.front').html('<img src="img/card_' + $.list[index] + '.jpg">');
+         }); ;
+
+
+
+         if (window.RESDATA.jsonResponse.Rows && window.RESDATA.jsonResponse.Rows[0].prizelevel) $('img[src="img/card_5.jpg"]').attr('src', 'img/j' + window.RESDATA.jsonResponse.Rows[0].prizelevel + '.jpg')
+
+
+     }
+
+     function randomList() {
+         $.list = $.list.sort(function () {
+             return Math.random() > .5 ? -1 : 1;
+         });
+     }
+
+     function got(data) {
+         $.fn.storage(data);
+         $.fn.storage('bomb', 'isBomb');
+     }
+
+     function lose(data) {
+         $.fn.storage('tstcount', data.toString());
+         $.fn.storage('bomb', 'notBomb');
+     }
+
+
+ })
+</script>
+</body>
+</html>
