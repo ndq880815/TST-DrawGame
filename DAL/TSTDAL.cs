@@ -15,9 +15,8 @@ namespace DAL
 {
     public class TSTDAL
     {
-         Model.ObjectResult result = new Model.ObjectResult();
+        Model.ObjectResult result = new Model.ObjectResult();
         JavaScriptSerializer serializer = new JavaScriptSerializer();
-
 
         #region 根据cookie值判断此用户是否cookie过期及不过期返回信息
         /// <summary>
@@ -63,9 +62,6 @@ namespace DAL
         }
         #endregion
 
-
-
-
         #region 用户登录
         /// <summary>
         /// 用户登录
@@ -105,30 +101,30 @@ namespace DAL
 
 
                 }
-                //else
-                //{
-                //    int i = 0;
-                //    Guid usercode = Guid.NewGuid();
-                //    SqlParameter[] param = new SqlParameter[2];
-                //    param[0] = new SqlParameter("@tstcode", SqlDbType.NVarChar, 50);
-                //    param[0].Value = tstcode;
-                //    param[1] = new SqlParameter("@usercode", SqlDbType.UniqueIdentifier);
-                //    param[1].Value = usercode;
+                else
+                {
+                    int i = 0;
+                    Guid usercode = Guid.NewGuid();
+                    SqlParameter[] param = new SqlParameter[2];
+                    param[0] = new SqlParameter("@tstcode", SqlDbType.NVarChar, 50);
+                    param[0].Value = tstcode;
+                    param[1] = new SqlParameter("@usercode", SqlDbType.UniqueIdentifier);
+                    param[1].Value = usercode;
 
-                //    StringBuilder sb_update = new StringBuilder();
-                //    sb_update.Append(" INSERT INTO [dbo].[tst_userinfo]([usercode],[tstcode],[tstcount])VALUES(@usercode,@tstcode,0) ");
+                    StringBuilder sb_update = new StringBuilder();
+                    sb_update.Append(" INSERT INTO [dbo].[tst_userinfo]([usercode],[tstcode],[tstcount])VALUES(@usercode,@tstcode,0) ");
            
 
-                //    i = SqlHelper.ExecuteNonQuery(Conn.connectionstring, CommandType.Text, sb_update.ToString(), param);
-                //    UserInfo ui_model = new UserInfo();
-                //    #region
-                //    ui_model.tstcode = tstcode;
-                //    ui_model.usercode = usercode.ToString();
-                //    ui_model.tstcount = 0;
-                //    #endregion
-                //    list_ui.Add(ui_model);
+                    i = SqlHelper.ExecuteNonQuery(Conn.connectionstring, CommandType.Text, sb_update.ToString(), param);
+                    UserInfo ui_model = new UserInfo();
+                    #region
+                    ui_model.tstcode = tstcode;
+                    ui_model.usercode = usercode.ToString();
+                    ui_model.tstcount = 0;
+                    #endregion
+                    list_ui.Add(ui_model);
 
-                //}
+                }
                 ui.Rows = list_ui;
                 return ui;
             }
@@ -140,9 +136,6 @@ namespace DAL
             #endregion
         }
         #endregion
-
-
-
 
         #region 获取所有奖品列表,组合字符串并返回
         /// <summary>
@@ -187,7 +180,6 @@ namespace DAL
         }
         #endregion
 
-
         #region 返回剩余抽奖次数根据usercode
         /// <summary>
         /// 返回剩余抽奖次数根据usercode
@@ -220,7 +212,6 @@ namespace DAL
             #endregion
         }
         #endregion
-
 
         #region 插入用户抽奖记录
         /// <summary>
@@ -263,7 +254,6 @@ namespace DAL
 
         }
         #endregion
-
 
         #region 获取所有奖品列表根据奖品等级
         /// <summary>
@@ -337,6 +327,7 @@ namespace DAL
         }
 
         #endregion
+
         #region 验证是否存在此用户，如存在，是否以中奖，根据usercode
         /// <summary>
         /// 验证是否存在此用户，如存在，是否以中奖，根据usercode
@@ -361,6 +352,26 @@ namespace DAL
                 isExist = true;
             }
             return isExist;
+        }
+
+        #endregion
+
+        #region 根据usercode获取用户中奖纪录
+        /// <summary>
+        /// 根据usercode获取用户中奖纪录
+        /// </summary>
+        public DataSet GetUserDrawResult(string usercode)
+        {
+            try { 
+                StringBuilder sb_select = new StringBuilder();
+                sb_select.Append("select a.tstcode, b.winlevel, b.createdate from tst_xs.dbo.tst_userinfo as a right join tst_xs.dbo.tst_userrecord as b on b.usercode=a.usercode ");
+                sb_select.Append("where b.winlevel >= 1 and a.tstcode='" + usercode + "'");
+                return SqlHelper.ExecuteDataset(Conn.connectionstring, CommandType.Text, sb_select.ToString());
+            }
+            catch
+            {
+                return null;
+            }
         }
 
         #endregion
@@ -443,8 +454,6 @@ namespace DAL
         }
         #endregion
 
-
-
         #region 更新奖品的库存根据奖品等级和用户抽奖次数
         /// <summary>
         /// 更新奖品的库存根据奖品等级和用户抽奖次数
@@ -482,9 +491,6 @@ namespace DAL
         }
         #endregion
 
-
-
-
         #region 验证是否可插入中奖信息
         /// <summary>
         /// 验证是否可插入中奖信息
@@ -514,20 +520,6 @@ namespace DAL
         }
 
         #endregion
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         #region 插入用户code
         /// <summary>
@@ -563,19 +555,6 @@ namespace DAL
         }
         #endregion
 
-        
-
-
-       
-
-
-
-       
-
-
-      
-
-
         #region 验证是否抽过奖品
         /// <summary>
         /// 验证是否抽过奖品
@@ -605,10 +584,5 @@ namespace DAL
         }
 
         #endregion
-
-      
-
-        
-
     }
 }

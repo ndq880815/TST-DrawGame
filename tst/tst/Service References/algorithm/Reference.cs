@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace newtst.algorithm {
+namespace tst.algorithm {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -17,12 +17,12 @@ namespace newtst.algorithm {
         
         // CODEGEN: 命名空间 http://tempuri.org/ 的元素名称 arrayvalues 以后生成的消息协定未标记为 nillable
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/PrizeLevel", ReplyAction="*")]
-        newtst.algorithm.PrizeLevelResponse PrizeLevel(newtst.algorithm.PrizeLevelRequest request);
+        tst.algorithm.PrizeLevelResponse PrizeLevel(tst.algorithm.PrizeLevelRequest request);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/PrizeLevel", ReplyAction="*")]
-        System.IAsyncResult BeginPrizeLevel(newtst.algorithm.PrizeLevelRequest request, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginPrizeLevel(tst.algorithm.PrizeLevelRequest request, System.AsyncCallback callback, object asyncState);
         
-        newtst.algorithm.PrizeLevelResponse EndPrizeLevel(System.IAsyncResult result);
+        tst.algorithm.PrizeLevelResponse EndPrizeLevel(System.IAsyncResult result);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -32,12 +32,12 @@ namespace newtst.algorithm {
     public partial class PrizeLevelRequest {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="PrizeLevel", Namespace="http://tempuri.org/", Order=0)]
-        public newtst.algorithm.PrizeLevelRequestBody Body;
+        public tst.algorithm.PrizeLevelRequestBody Body;
         
         public PrizeLevelRequest() {
         }
         
-        public PrizeLevelRequest(newtst.algorithm.PrizeLevelRequestBody Body) {
+        public PrizeLevelRequest(tst.algorithm.PrizeLevelRequestBody Body) {
             this.Body = Body;
         }
     }
@@ -70,12 +70,12 @@ namespace newtst.algorithm {
     public partial class PrizeLevelResponse {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Name="PrizeLevelResponse", Namespace="http://tempuri.org/", Order=0)]
-        public newtst.algorithm.PrizeLevelResponseBody Body;
+        public tst.algorithm.PrizeLevelResponseBody Body;
         
         public PrizeLevelResponse() {
         }
         
-        public PrizeLevelResponse(newtst.algorithm.PrizeLevelResponseBody Body) {
+        public PrizeLevelResponse(tst.algorithm.PrizeLevelResponseBody Body) {
             this.Body = Body;
         }
     }
@@ -98,7 +98,7 @@ namespace newtst.algorithm {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface algorithmSoapChannel : newtst.algorithm.algorithmSoap, System.ServiceModel.IClientChannel {
+    public interface algorithmSoapChannel : tst.algorithm.algorithmSoap, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -122,7 +122,7 @@ namespace newtst.algorithm {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class algorithmSoapClient : System.ServiceModel.ClientBase<newtst.algorithm.algorithmSoap>, newtst.algorithm.algorithmSoap {
+    public partial class algorithmSoapClient : System.ServiceModel.ClientBase<tst.algorithm.algorithmSoap>, tst.algorithm.algorithmSoap {
         
         private BeginOperationDelegate onBeginPrizeLevelDelegate;
         
@@ -152,41 +152,41 @@ namespace newtst.algorithm {
         public event System.EventHandler<PrizeLevelCompletedEventArgs> PrizeLevelCompleted;
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        newtst.algorithm.PrizeLevelResponse newtst.algorithm.algorithmSoap.PrizeLevel(newtst.algorithm.PrizeLevelRequest request) {
+        tst.algorithm.PrizeLevelResponse tst.algorithm.algorithmSoap.PrizeLevel(tst.algorithm.PrizeLevelRequest request) {
             return base.Channel.PrizeLevel(request);
         }
         
         public int PrizeLevel(int weight, string arrayvalues) {
-            newtst.algorithm.PrizeLevelRequest inValue = new newtst.algorithm.PrizeLevelRequest();
-            inValue.Body = new newtst.algorithm.PrizeLevelRequestBody();
+            tst.algorithm.PrizeLevelRequest inValue = new tst.algorithm.PrizeLevelRequest();
+            inValue.Body = new tst.algorithm.PrizeLevelRequestBody();
             inValue.Body.weight = weight;
             inValue.Body.arrayvalues = arrayvalues;
-            newtst.algorithm.PrizeLevelResponse retVal = ((newtst.algorithm.algorithmSoap)(this)).PrizeLevel(inValue);
+            tst.algorithm.PrizeLevelResponse retVal = ((tst.algorithm.algorithmSoap)(this)).PrizeLevel(inValue);
             return retVal.Body.PrizeLevelResult;
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult newtst.algorithm.algorithmSoap.BeginPrizeLevel(newtst.algorithm.PrizeLevelRequest request, System.AsyncCallback callback, object asyncState) {
+        System.IAsyncResult tst.algorithm.algorithmSoap.BeginPrizeLevel(tst.algorithm.PrizeLevelRequest request, System.AsyncCallback callback, object asyncState) {
             return base.Channel.BeginPrizeLevel(request, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         public System.IAsyncResult BeginPrizeLevel(int weight, string arrayvalues, System.AsyncCallback callback, object asyncState) {
-            newtst.algorithm.PrizeLevelRequest inValue = new newtst.algorithm.PrizeLevelRequest();
-            inValue.Body = new newtst.algorithm.PrizeLevelRequestBody();
+            tst.algorithm.PrizeLevelRequest inValue = new tst.algorithm.PrizeLevelRequest();
+            inValue.Body = new tst.algorithm.PrizeLevelRequestBody();
             inValue.Body.weight = weight;
             inValue.Body.arrayvalues = arrayvalues;
-            return ((newtst.algorithm.algorithmSoap)(this)).BeginPrizeLevel(inValue, callback, asyncState);
+            return ((tst.algorithm.algorithmSoap)(this)).BeginPrizeLevel(inValue, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        newtst.algorithm.PrizeLevelResponse newtst.algorithm.algorithmSoap.EndPrizeLevel(System.IAsyncResult result) {
+        tst.algorithm.PrizeLevelResponse tst.algorithm.algorithmSoap.EndPrizeLevel(System.IAsyncResult result) {
             return base.Channel.EndPrizeLevel(result);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
         public int EndPrizeLevel(System.IAsyncResult result) {
-            newtst.algorithm.PrizeLevelResponse retVal = ((newtst.algorithm.algorithmSoap)(this)).EndPrizeLevel(result);
+            tst.algorithm.PrizeLevelResponse retVal = ((tst.algorithm.algorithmSoap)(this)).EndPrizeLevel(result);
             return retVal.Body.PrizeLevelResult;
         }
         

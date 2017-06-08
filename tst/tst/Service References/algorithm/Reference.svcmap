@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="3343f4a1-a69a-427b-b792-2514652d57ec" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ffa8eb6d-eb6a-462b-bb60-1985d9774073" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -21,8 +21,8 @@
     <MetadataSource Address="http://webservice.wangfan.com/luckydraw/algorithm.asmx" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="algorithm.wsdl" MetadataType="Wsdl" ID="3e7cba36-ab4e-4c82-996a-1a304d55299a" SourceId="1" SourceUrl="http://webservice.wangfan.com/luckydraw/algorithm.asmx?wsdl" />
-    <MetadataFile FileName="algorithm.disco" MetadataType="Disco" ID="5063ef8b-1bc2-498a-95d6-3dc7eddad7aa" SourceId="1" SourceUrl="http://webservice.wangfan.com/luckydraw/algorithm.asmx?disco" />
+    <MetadataFile FileName="algorithm.wsdl" MetadataType="Wsdl" ID="eb405572-18ec-415a-93a4-e9773ba29f6a" SourceId="1" SourceUrl="http://webservice.wangfan.com/luckydraw/algorithm.asmx?wsdl" />
+    <MetadataFile FileName="algorithm.disco" MetadataType="Disco" ID="8263050d-3ee4-406b-a460-3d94d76cdb71" SourceId="1" SourceUrl="http://webservice.wangfan.com/luckydraw/algorithm.asmx?disco" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

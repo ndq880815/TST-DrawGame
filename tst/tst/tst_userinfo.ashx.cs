@@ -6,8 +6,7 @@ using System.Web;
 using System.Web.Script.Serialization;
 using Helper;
 using System.Configuration;
-
-namespace newtst
+namespace tst
 {
     /// <summary>
     /// tst_userinfo 的摘要说明
@@ -27,7 +26,7 @@ namespace newtst
             string address = "";
             string prize = "";
             if (context.Request["usercode"] != null && context.Request["usercode"].ToString() != string.Empty &&
-                //if (context.Request.Cookies["usercode"] != null && !string.IsNullOrEmpty(context.Request.Cookies["usercode"].Value) &&
+           //if (context.Request.Cookies["usercode"] != null && !string.IsNullOrEmpty(context.Request.Cookies["usercode"].Value) &&
                 context.Request["name"] != null && context.Request["name"].ToString() != string.Empty &&
                 context.Request["mp"] != null && context.Request["mp"].ToString() != string.Empty &&
                 context.Request["ad"] != null && context.Request["ad"].ToString() != string.Empty &&
@@ -76,7 +75,7 @@ namespace newtst
                         catch
                         {
                             //更新库存 加法
-                            tstbll.Update_PrizeNumberByPrizeid(int.Parse(prize), usercode);
+                            tstbll.Update_PrizeNumberByPrizeid(int.Parse(prize),usercode);
                             result.result = "failed";
                             result.jsonResponse = "系统错误";
                         }

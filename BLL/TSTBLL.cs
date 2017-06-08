@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Model;
 using DAL;
+using System.Data;
+
 namespace BLL
 {
     public class TSTBLL
@@ -81,6 +83,14 @@ namespace BLL
         public bool IsUserCodeAndPrize(Guid usercode)
         {
             return aadal.IsUserCodeAndPrize(usercode);
+        }
+
+        /// <summary>
+        /// 根据usercode获取用户中奖纪录
+        /// </summary>
+        public DataSet GetUserDrawResult(string usercode)
+        {
+            return aadal.GetUserDrawResult(usercode);
         }
 
         /// <summary>

@@ -45,7 +45,6 @@
     <Compile Include="ApplyActivityUser.cs" />
     <Compile Include="prize.cs" />
     <Compile Include="userinfo.cs" />
-    <Compile Include="ObjectResultSucess.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
