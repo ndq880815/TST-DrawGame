@@ -364,7 +364,7 @@ namespace DAL
         {
             try { 
                 StringBuilder sb_select = new StringBuilder();
-                sb_select.Append("select a.tstcode, b.winlevel, b.createdate from tst_xs.dbo.tst_userinfo as a right join tst_xs.dbo.tst_userrecord as b on b.usercode=a.usercode ");
+                sb_select.Append("select a.tstcode,b.winlevel,b.createdate,c.usermobilephone,c.useraddress from tst_xs.dbo.tst_userinfo as a right join tst_xs.dbo.tst_userrecord as b on b.usercode=a.usercode right join tst_xs.dbo.tst_address as c on c.usercode=a.tstcode ");
                 sb_select.Append("where b.winlevel >= 1 and a.tstcode='" + usercode + "'");
                 return SqlHelper.ExecuteDataset(Conn.connectionstring, CommandType.Text, sb_select.ToString());
             }

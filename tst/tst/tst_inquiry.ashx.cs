@@ -24,7 +24,7 @@ namespace tst
             
             if (string.IsNullOrEmpty(context.Request["tstcode"])) {
                 result.result = "false";
-                result.jsonResponse = "0|0";
+                result.jsonResponse = "0";
                 context.Response.Write(serializer.Serialize(result));
                 return;
             }
@@ -35,18 +35,21 @@ namespace tst
             if (query == null)
             {
                 result.result = "false";
-                result.jsonResponse = "0|0";
+                result.jsonResponse = "0";
             }
             else if (query.Tables[0].Rows.Count == 0)
             {
                 result.result = "false";
-                result.jsonResponse = "0|0";
+                result.jsonResponse = "0";
             }
             else {
-                string level = query.Tables[0].Rows[0][1].ToString();
+                //string tstcode = query.Tables[0].Rows[0][0].ToString();
+                string level = query.Tables[0].Rows[0][1].ToString();   
                 string datetime = query.Tables[0].Rows[0][2].ToString();
+                string mobile = query.Tables[0].Rows[0][3].ToString();
+                string address = query.Tables[0].Rows[0][4].ToString();
                 result.result = "true";
-                result.jsonResponse = level+ "|" + datetime;
+                result.jsonResponse = level+ "|" + datetime + "|" + mobile + "|" + address;
             }
 
             context.Response.Write(serializer.Serialize(result));
