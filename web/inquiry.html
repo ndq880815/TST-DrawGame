@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh">	
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>中奖查询</title>
+    <style>
+        *{margin: 0; padding: 0}
+        body{width: 100%;height: 100%;background:url("img/bg.jpg") no-repeat; background-size: cover}
+        .page{margin-top: 45%}
+        .state{font-size:0.18rem;font-weight:600;margin:0.1rem 0 0.2rem 0.2rem}
+        .active{display: block}
+        .red{color: red}
+        #input{width: 1.5rem; height: 0.3rem;font-size: 0.18rem; margin-left:0.4rem;display: inline-block;float: left;margin-right: 0.2rem;border: 0.01rem solid #666 ; border-radius:0.03rem;margin-bottom: 0.2rem}
+        .button{width: 0.8rem; height: 0.25rem;font-size: 0.12rem;float: left;margin-top: 0.03rem; border-radius:0.03rem;border: 0.01rem solid #666666; margin-bottom: 0.2rem}
+        #clear{clear: both}
+        ul{font-size: 0.16rem;display:none;}
+        ul li{margin-left: 0.2rem;list-style: none;}
+
+    </style>
+</head>
+<body>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/rem.js"></script>
+<div class="page">
+    <p class="state">请输入6位或12位优惠吗：</p>
+    <input id="input" type="text" value="">
+    <button id="btn-query" class="button">点击查询</button>
+    <div id="clear"></div>
+    <p class="state">查询信息如下：</p>
+    <ul id="result">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+
+<script type="text/javascript">
+	var _STR_DRAW_LUCKY = "恭喜你中奖,中奖奖品为:【%s】等奖";
+	var _STR_DRAW_DATETIME ='中奖时间: %s';
+	var _STR_INFO_COMPLETE ="中奖信息已填写，耐心等待物品邮寄！谢谢";
+	var _STR_INFO_INCOMPLETE = "中奖信息未填写，请联系客服确认邮件地址信息！";
+	var _STR_INFO_WARN = "请于12月18日之前与客服联系确认地址，逾期视为自动放弃。";
+	var _STR_DRAW_UNLUCKY = "未中奖，下次继续努力,谢谢！";
+	
+    var code = document.getElementById("input");
+    $(document).ready(function () {
+        $("#btn-query").on('touchstart click', function () {
+			$("#result").removeClass("active");
+			$("#result li").html("");
+            $.ajax({
+                type:"post",
+                url: "http://onfanpai.tingmimi.net/tst_inquiry.ashx",
+                async:true,
+                data:{
+                    tstcode:code.value
+                },
+                dataType:"json",
+                success:function (res) {
+					console.log(res.result);
+					if(res.result == "true") {
+						var responseData = res.jsonResponse.split("|");
+						$("#result").addClass("active");
+						$("#result li").eq(0).html(_STR_DRAW_LUCKY.replace(/%s/, responseData[0]));
+						$("#result li").eq(1).html(_STR_DRAW_DATETIME.replace(/%s/, responseData[1]));
+						$("#result li").eq(2).html(_STR_INFO_COMPLETE);
+						console.log(responseData);
+						if(responseData[2].length == 0 || responseData[3].length == 0) {
+							$("#result li").eq(2).html(_STR_INFO_INCOMPLETE).css("color","red");
+							$("#result li").eq(3).html(_STR_INFO_WARN).css("color","red");
+						}
+					} else {
+						console.log(1);
+						$("#result").addClass("active");
+						$("#result li").eq(0).html(_STR_DRAW_UNLUCKY).css("color","red");
+					}
+                },
+                error:function () {
+					alert('无法获取到信息，请检查网络')
+                }
+            })
+
+        })
+    })
+</script>
+</body>
+</html>
